@@ -21,6 +21,9 @@ void RobotomyRequestForm::execute(Bureaucrat const &executor) const {
 	std::cout << "Bzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz..." << std::endl;
 	if (executor.GetGrade() >  this->GetEXECgrade())
 		throw AForm::GradeTooHighException();
-	else
-		std::cout << executor.GetName() << " Planted a tree is your directory." << std::endl;
+	else {
+		std::srand(std::time(0));
+    	if (std::rand() % 2 == 1)
+			std::cout << executor.GetName() << " has been robotomized successfully." << std::endl;
+	}
 }
