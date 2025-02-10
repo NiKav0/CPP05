@@ -51,10 +51,16 @@ void ShrubberyCreationForm::execute(Bureaucrat const &executor) const {
     	file << "                          ...;%@@@@@%%:;;;;,..\n";
 		file.close();
 
-		std::cout << executor.GetName() <<  " created the file \"" << filename << "\", check it out!" << std::endl; 
+		std::cout << executor.GetName() <<  " created the file \"" << this->_filename << "\", check it out!" << std::endl; 
 	}
-	else
+		else if (this->GetSigned() == false) {
+				std::cerr << executor.GetName() << " couldn't create the file \"" << this->_filename << "\" because: ";
+			throw (AForm::FormNotSigned());
+		}
+	else {
+		std::cerr << executor.GetName() << " couldn't create the file \"" << this->_filename << "\" because: ";
 		throw AForm::GradeTooHighException();
+	}
 }
 
 ShrubberyCreationForm::~ShrubberyCreationForm() {}

@@ -6,24 +6,23 @@
 
 int	main(void) {
     Bureaucrat lkhatr("Lkhatr", 2);
-    Bureaucrat bagwago("Bagwago", 145);
-    // PresidentialPardonForm Pform("l3skr");
-    // AForm aform("Form 3adya", 23, 20);
+    Bureaucrat bagwago("Bagwago", 140);
+    PresidentialPardonForm Pform("l3skr");
+    // AForm *aform("Form 3adya", 23, 20);
     // AForm *form = new PresidentialPardonForm("usine");
-	AForm *form2 = new ShrubberyCreationForm("TreeForm");
+    // AForm *form2 = new RobotomyRequestForm("Robotomy");
+	AForm *form3 = new ShrubberyCreationForm("TreeForm");
     try {
+		// // Trying to execute a PresidentialPardonForm
         // form->execute(lkhatr);
         // form->execute(bagwago);
-        // std::cout << lkhatr.GetGrade() << " lkhatr " << bagwago.GetGrade() << " bagwago\n";
-        // std::cout << form->GetEXECgrade() << " execgrade " << 
-        //              form->GetSIGNgrade() << " signgrade " << 
-        //              form->GetName() << " name.\n";
-        // AForm *form2 = new RobotomyRequestForm("Robotomy");
+		// // Trying to execute a RobotomyRequestForm
         // form2->execute(lkhatr);
         // form2->execute(bagwago);
-		form2->execute(lkhatr);
-		form2->execute(bagwago);
-
+		// Trying to execute a ShrubberyCreationForm
+		form3->execute(lkhatr);
+		form3->execute(lkhatr);
+		form3->execute(bagwago);
     }
     catch (AForm::GradeTooHighException const &e) {
         std::cerr << e.what() << std::endl;
@@ -31,4 +30,7 @@ int	main(void) {
     catch (AForm::GradeTooLowException const &e) {
         std::cerr << e.what() << std::endl;
     }
+	catch (AForm::FormNotSigned const &e) {
+		std::cerr << e.what() << std::endl;
+	}
 }

@@ -19,5 +19,8 @@ PresidentialPardonForm &PresidentialPardonForm::operator=(PresidentialPardonForm
 
 void PresidentialPardonForm::execute(Bureaucrat const &executor) const
 {
-	std::cout << executor.GetName() << " has been pardoned by Zaphod Beeblebrox." << std::endl;
+	if (executor.GetGrade() <= this->GetEXECgrade())
+		std::cout << executor.GetName() << " has been pardoned by Zaphod Beeblebrox." << std::endl;
+	else
+		throw AForm::GradeTooHighException();
 }
