@@ -19,7 +19,7 @@ RobotomyRequestForm &RobotomyRequestForm::operator=(RobotomyRequestForm const &o
 
 void RobotomyRequestForm::execute(Bureaucrat const &executor) const {
 	std::cout << "Bzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz..." << std::endl;
-	if (executor.GetGrade() >  this->GetEXECgrade())
+	if (executor.GetGrade() <=  this->GetEXECgrade())
 		throw AForm::GradeTooHighException();
 	else {
 		std::srand(std::time(0));

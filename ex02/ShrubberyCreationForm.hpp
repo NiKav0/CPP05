@@ -4,6 +4,7 @@
 #include <exception>
 #include <cstdlib>
 #include <ctime>
+#include <fstream>
 #include "AForm.hpp"
 
 class ShrubberyCreationForm : public AForm {
@@ -15,4 +16,4 @@ class ShrubberyCreationForm : public AForm {
 		void execute(Bureaucrat const &executor) const ;
 	private:
 		const std::string	_filename;
-}
+};
