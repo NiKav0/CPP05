@@ -5,8 +5,15 @@ Form::Form() : _name("SampleForm"), _SIGNgrade(150), _EXECgrade(150), _signed(fa
 
 }
 
-Form::Form(int signgrade, int execgrade) : _name("SampleForm"), _SIGNgrade(signgrade), _EXECgrade(execgrade), _signed(false) {
-
+Form::Form(std::string name, int signgrade, int execgrade) : _name(name), _SIGNgrade(signgrade), _EXECgrade(execgrade), _signed(false) {
+	if (this->_SIGNgrade < 1)
+		throw (Form::GradeTooHighException());
+	else if (this->_SIGNgrade > 150)
+		throw (Form::GradeTooLowException());
+	if (this->_EXECgrade < 1)
+		throw (Form::GradeTooHighException());
+	else if (this->_EXECgrade > 150)
+		throw (Form::GradeTooLowException());
 }
 
 Form::~Form() {
@@ -50,4 +57,8 @@ const char	*Form::GradeTooHighException::what() const throw()
 const char	*Form::GradeTooLowException::what() const throw()
 {
 	return ("Grade too low, must be less than what the form requires.");
+}
+
+const char	*Form::AlreadySigned::what() const throw() {
+	return ("Form already signed.");
 }

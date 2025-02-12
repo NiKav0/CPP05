@@ -10,7 +10,7 @@ class Bureaucrat ;
 class Form {
 	public :
 		Form();
-		Form(int signgrade, int execgrade);
+		Form(std::string name, int signgrade, int execgrade);
 		~Form();
 		Form &operator=(Form const &old);
 		std::string GetName();
@@ -25,6 +25,10 @@ class Form {
 		};
 		class GradeTooLowException: public std::exception
 		{
+			public:
+				const char *what() const throw();
+		};
+		class AlreadySigned: public std::exception {
 			public:
 				const char *what() const throw();
 		};

@@ -76,8 +76,10 @@ void Bureaucrat::signForm(Form &form) {
 			form.beSigned(*this);
 			std::cout << this->_name << " signed " << form.GetName() << std::endl;
 		}
-		else if (form.GetSigned() == true)
-			std::cout << this->_name << " Has already signed " << form.GetName() + "." << std::endl;
+		else if (form.GetSigned() == true) {
+			std::cout << this->_name << " has already signed " << form.GetName() + "." << std::endl;
+			throw Form::AlreadySigned();
+		}
 	}
 	else
 		throw Form::GradeTooLowException();
