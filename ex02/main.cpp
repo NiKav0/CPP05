@@ -1,36 +1,33 @@
-#include "Bureaucrat.hpp"
 #include "AForm.hpp"
-#include "PresidentialPardonForm.hpp"
-#include "RobotomyRequestForm.hpp"
+#include "Bureaucrat.hpp"
 #include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
 
-int	main(void) {
-    Bureaucrat lkhatr("Lkhatr", 2);
-    Bureaucrat bagwago("Bagwago", 140);
-    PresidentialPardonForm Pform("l3skr");
-    // AForm *aform("Form 3adya", 23, 20);
-    // AForm *form = new PresidentialPardonForm("usine");
-    // AForm *form2 = new RobotomyRequestForm("Robotomy");
-	AForm *form3 = new ShrubberyCreationForm("TreeForm");
+int    main() {
+    Bureaucrat    me("AstroBoy", 12);
     try {
-		// // Trying to execute a PresidentialPardonForm
-        // form->execute(lkhatr);
-        // form->execute(bagwago);
-		// // Trying to execute a RobotomyRequestForm
-        // form2->execute(lkhatr);
-        // form2->execute(bagwago);
-		// Trying to execute a ShrubberyCreationForm
-		form3->execute(lkhatr);
-		form3->execute(lkhatr);
-		form3->execute(bagwago);
+        ShrubberyCreationForm    form("home");
+        RobotomyRequestForm    robot("dali3");
+        PresidentialPardonForm    pardon("bagwago");
+        std::cout << form;
+        me.signForm(form);
+        std::cout << form;
+        form.execute(me);
+        std::cout << "-------------------------------------\n";
+        std::cout << robot;
+        me.signForm(robot);
+        std::cout << robot;
+        robot.execute(me);
+        std::cout << "-------------------------------------\n";
+        std::cout << pardon;
+        me.signForm(pardon);
+        std::cout << pardon;
+        pardon.execute(me);
     }
-    catch (AForm::GradeTooHighException const &e) {
-        std::cerr << e.what() << std::endl;
+    catch ( std::exception &e ) {
+        std::cerr << "[+] Exception catched.\n";
+        std::cerr << e.what();
     }
-    catch (AForm::GradeTooLowException const &e) {
-        std::cerr << e.what() << std::endl;
-    }
-	catch (AForm::FormNotSigned const &e) {
-		std::cerr << e.what() << std::endl;
-	}
+    return (0);
 }

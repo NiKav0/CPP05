@@ -78,8 +78,8 @@ void Bureaucrat::signForm(AForm &form) {
 			this->_signed = true;
 		}
 		else if (form.GetSigned() == true) {
-			std::cout << this->_name << " Has already signed " << form.GetName() + "." << std::endl;
-			return ;
+			std::cout << this->_name << " has already signed " << form.GetName() + "." << std::endl;
+			throw AForm::AlreadySigned();
 		}
 	}
 	else
@@ -87,13 +87,12 @@ void Bureaucrat::signForm(AForm &form) {
 }
 
 void Bureaucrat::executeForm(AForm const &form) {
-	if ((this->_signed )== true)
-		throw AForm::AlreadySigned();
+	if ((this->_signed )== false)
+		throw AForm::FormNotSigned();
 	if (this->_grade > form.GetEXECgrade())
 		throw AForm::GradeTooHighException();
 	else {
 		form.execute(*this);
-		this->_signed = true;
 		std::cout << this->_name << " executed " << form.GetName() << "." << std::endl;
 	}
 }

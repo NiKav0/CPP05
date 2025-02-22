@@ -26,6 +26,11 @@ AForm &AForm::operator=(AForm const &old) {
 	return (*this);
 }
 
+std::ostream    &operator<<(std::ostream &out, AForm const &old){
+    out << " Form name: " << old.GetName() << " Grade to sign: " << old.GetSIGNgrade() << " Grade to execute: " << old.GetEXECgrade() << " Signed: " << old.GetSigned() << std::endl;
+    return out;
+}
+
 std::string AForm::GetName() const{
 	return (this->_name);
 }
@@ -42,10 +47,13 @@ int	AForm::GetEXECgrade() const {
 	return (this->_EXECgrade);
 }
 
+void AForm::SetSigned(bool sign) {
+	this->_signed = sign;
+}
+
 void AForm::beSigned(Bureaucrat const name) {
 	if (name.GetGrade() <= this->_SIGNgrade) {
 		this->_signed = true;
-		std::cout << name.GetName() << "Successfully signed " << this->_name << "." << std::endl;
 	}
 	else
 		throw AForm::GradeTooLowException();

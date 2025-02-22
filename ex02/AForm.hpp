@@ -18,6 +18,7 @@ class AForm {
 		AForm &operator=(AForm const &old);
 		std::string GetName() const;
 		bool		GetSigned() const;
+		void		SetSigned(bool);
 		int			GetSIGNgrade() const;
 		int			GetEXECgrade() const;
 		void		beSigned(Bureaucrat const);
@@ -45,3 +46,4 @@ class AForm {
 		const int _EXECgrade;
 		bool	  _signed;
 };
+std::ostream &operator<<(std::ostream &out, AForm const &old);
