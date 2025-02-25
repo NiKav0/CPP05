@@ -51,7 +51,7 @@ void ShrubberyCreationForm::execute(Bureaucrat const &executor) const {
     	file << "                          ...;%@@@@@%%:;;;;,..\n";
 		file.close();
 
-		std::cout << executor.GetName() <<  " created the file \"" << this->_filename << "\", check it out!" << std::endl; 
+		std::cout << executor.GetName() <<  " created the file \"" << this->_filename << "_shrubbery\", check it out!" << std::endl; 
 	}
 		else if (this->GetSigned() == false) {
 				std::cerr << executor.GetName() << " couldn't create the file \"" << this->_filename << "\" because: ";

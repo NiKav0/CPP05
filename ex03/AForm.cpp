@@ -48,7 +48,6 @@ int	AForm::GetEXECgrade() const {
 void AForm::beSigned(Bureaucrat const name) {
 	if (name.GetGrade() <= this->_SIGNgrade) {
 		this->_signed = true;
-		std::cout << name.GetName() << "Successfully signed " << this->_name << "." << std::endl;
 	}
 	else
 		throw AForm::GradeTooLowException();

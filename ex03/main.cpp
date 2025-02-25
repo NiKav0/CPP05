@@ -20,7 +20,8 @@ int main() {
 		costume.signForm(*form2);
 		costume.executeForm(*form2);
 		delete form2;
-		form3->beSigned(costume);
+		std::cout << "------------------------------------" << std::endl;
+		costume.signForm(*form3);
 		costume.executeForm(*form3);
 		delete form3;
 		std::cout << "------------------------------------" << std::endl;
