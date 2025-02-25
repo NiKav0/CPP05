@@ -1,5 +1,8 @@
 #include "AForm.hpp"
 #include "Bureaucrat.hpp"
+#include "PresidentialPardonForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "ShrubberyCreationForm.hpp"
 
 AForm::AForm() : _name("SampleAForm"), _SIGNgrade(150), _EXECgrade(150), _signed(false) {}
 
@@ -60,6 +63,17 @@ void AForm::beExecuted(Bureaucrat const name) {
 		throw AForm::FormNotSigned();
 	else
 		throw AForm::GradeTooHighException();
+}
+
+AForm	*AForm::makeForm(const std::string &type, const std::string &target)
+{
+	AForm	*form;
+
+	form = NULL;
+	form = ShrubberyCreationForm::makeForm(form, type, target);
+	form = RobotomyRequestForm::makeForm(form, type, target);
+	form = PresidentialPardonForm::makeForm(form, type, target);
+	return (form);
 }
 
 const char	*AForm::GradeTooHighException::what() const throw() {

@@ -87,8 +87,8 @@ void Bureaucrat::signForm(AForm &form) {
 }
 
 void Bureaucrat::executeForm(AForm const &form) {
-	if ((this->_signed )== true)
-		throw AForm::AlreadySigned();
+	if ((this->_signed ) == false)
+		throw AForm::FormNotSigned();
 	if (this->_grade > form.GetEXECgrade())
 		throw AForm::GradeTooHighException();
 	else {

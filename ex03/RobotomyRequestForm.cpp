@@ -27,3 +27,10 @@ void RobotomyRequestForm::execute(Bureaucrat const &executor) const {
 			std::cout << executor.GetName() << " has been robotomized successfully." << std::endl;
 	}
 }
+
+AForm	*RobotomyRequestForm::makeForm(AForm *form, std::string const &type, std::string const &target)
+{
+	if (form == NULL && type == "Robotomy_FORM")
+		return (new RobotomyRequestForm(target));
+	return (form);
+}

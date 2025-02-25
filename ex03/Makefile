@@ -1,6 +1,6 @@
-NAME = AForm
+NAME = AForm3.0
 CXX = c++ -Wall -Wextra -Werror -std=c++98
-SRC = Bureaucrat.cpp AForm.cpp main.cpp ShrubberyCreationForm.cpp RobotomyRequestForm.cpp PresidentialPardonForm.cpp
+SRC = Bureaucrat.cpp AForm.cpp main.cpp Intern.cpp ShrubberyCreationForm.cpp RobotomyRequestForm.cpp PresidentialPardonForm.cpp
 OBJ = $(SRC:.cpp=.o)
 
 all: $(NAME)

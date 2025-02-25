@@ -63,4 +63,11 @@ void ShrubberyCreationForm::execute(Bureaucrat const &executor) const {
 	}
 }
 
+AForm	*ShrubberyCreationForm::makeForm(AForm *form, std::string const &type, std::string const &target)
+{
+	if (form == NULL && type == "Shrubbery_TREE")
+		return (new ShrubberyCreationForm(target));
+	return (form);
+}
+
 ShrubberyCreationForm::~ShrubberyCreationForm() {}

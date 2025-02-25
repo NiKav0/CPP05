@@ -1,36 +1,32 @@
-#include "Bureaucrat.hpp"
 #include "AForm.hpp"
-#include "PresidentialPardonForm.hpp"
-#include "RobotomyRequestForm.hpp"
-#include "ShrubberyCreationForm.hpp"
+#include "Intern.hpp"
+#include "Bureaucrat.hpp"
 
-int	main(void) {
-    Bureaucrat lkhatr("Lkhatr", 2);
-    Bureaucrat bagwago("Bagwago", 140);
-    PresidentialPardonForm Pform("l3skr");
-    // AForm *aform("Form 3adya", 23, 20);
-    // AForm *form = new PresidentialPardonForm("usine");
-    // AForm *form2 = new RobotomyRequestForm("Robotomy");
-	AForm *form3 = new ShrubberyCreationForm("TreeForm");
-    try {
-		// // Trying to execute a PresidentialPardonForm
-        // form->execute(lkhatr);
-        // form->execute(bagwago);
-		// // Trying to execute a RobotomyRequestForm
-        // form2->execute(lkhatr);
-        // form2->execute(bagwago);
-		// Trying to execute a ShrubberyCreationForm
-		form3->execute(lkhatr);
-		form3->execute(lkhatr);
-		form3->execute(bagwago);
-    }
-    catch (AForm::GradeTooHighException const &e) {
-        std::cerr << e.what() << std::endl;
-    }
-    catch (AForm::GradeTooLowException const &e) {
-        std::cerr << e.what() << std::endl;
-    }
-	catch (AForm::FormNotSigned const &e) {
-		std::cerr << e.what() << std::endl;
+int main() {
+	Intern		jfaf;
+	Bureaucrat	costume("Lmojahid", 1);
+
+	try {
+		AForm *form = jfaf.makeForm("Robotomy_FORM", "Clone01");
+		AForm *form2 = jfaf.makeForm("Shrubbery_TREE", "Clone02");
+		AForm *form3 = jfaf.makeForm("Presidential_FORM", "Clone03");
+		jfaf.makeForm("Random_Form", "Clone04");
+		
+		std::cout << "------------------------------------" << std::endl;
+		costume.signForm(*form);
+		costume.executeForm(*form);
+		delete form;
+		std::cout << "------------------------------------" << std::endl;
+		costume.signForm(*form2);
+		costume.executeForm(*form2);
+		delete form2;
+		form3->beSigned(costume);
+		costume.executeForm(*form3);
+		delete form3;
+		std::cout << "------------------------------------" << std::endl;
 	}
+	catch (std::exception &e) {
+		std::cout << "Caught exception: " << e.what() << std::endl;
+	}
+	return (0);
 }

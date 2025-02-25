@@ -5,14 +5,13 @@
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
 
-class Form;
+class AForm;
 
-class Intern
-{
+class Intern {
 	public:
 		Intern(void);
 		Intern(Intern const &copy);
 		~Intern(void);
 		Intern const	&operator=(Intern const &copy);
-		Form	*makeForm(std::string const &type, std::string const &target);
+		static AForm	*makeForm(std::string const &type, std::string const &target);
 };

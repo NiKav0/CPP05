@@ -24,3 +24,10 @@ void PresidentialPardonForm::execute(Bureaucrat const &executor) const
 	else
 		throw AForm::GradeTooHighException();
 }
+
+AForm	*PresidentialPardonForm::makeForm(AForm *form, std::string const &type, std::string const &target)
+{
+	if (form == NULL && type == "Presidential_FORM")
+		return (new PresidentialPardonForm(target));
+	return (form);
+}

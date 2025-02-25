@@ -1,4 +1,4 @@
-#include "intern.hpp"
+#include "Intern.hpp"
 
 Intern::Intern() {}
 
@@ -13,12 +13,12 @@ Intern const	&Intern::operator=(const Intern &copy) {
 	return (*this);
 }
 
-Form	*Intern::makeForm(const std::string &type, const std::string &target) {
-	Form	*form;
-	form = Form::makeForm(type, target);
+AForm	*Intern::makeForm(const std::string &type, const std::string &target) {
+	AForm	*form;
+	form = AForm::makeForm(type, target);
 	if (!form)
-		throw (Form::InvalidFormException());
+		std::cerr << "Invalid Form." << std::endl;
 	else
-		std::cout << "Intern creates form: " << form->getName() << " with target: " << form->getTarget() << std::endl;
+		std::cout << "Intern created form: " << form->GetName() << std::endl;
 	return (form);
 }

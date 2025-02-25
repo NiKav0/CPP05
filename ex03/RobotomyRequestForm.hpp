@@ -14,6 +14,7 @@ class RobotomyRequestForm : public AForm {
 		~RobotomyRequestForm();
 		RobotomyRequestForm &operator=(RobotomyRequestForm const &old);
 		void execute(Bureaucrat const &executor) const ;
+		static AForm	*makeForm(AForm *form, std::string const &type, std::string const &target);
 	private :
 		const std::string	_target;
 };

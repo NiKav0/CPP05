@@ -6,6 +6,7 @@
 #include <ctime>
 // #include "PresidentialPardonForm.hpp"
 // #include "RobotomyRequestForm.hpp"
+// #include "ShrubberyCreationForm.hpp"
 
 class Bureaucrat ;
 
@@ -22,6 +23,7 @@ class AForm {
 		int			GetEXECgrade() const;
 		void		beSigned(Bureaucrat const);
 		void		beExecuted(Bureaucrat const);
+		static AForm		*makeForm(std::string const &type, std::string const &target);
 		virtual void execute(Bureaucrat const &executor) const = 0;
 		class GradeTooHighException: public std::exception {
 			public:
